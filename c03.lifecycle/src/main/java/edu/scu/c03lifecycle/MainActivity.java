@@ -16,13 +16,12 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // separate for app
-        final SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-        count = sharedPref.getInt("counter", 0);
-
         setContentView(R.layout.activity_main);
         Toast.makeText(this, "in onCreate", Toast.LENGTH_SHORT).show();
+
+        // The SharedPreferences data is private to this app if Context.MODE_PRIVATE is used.
+        final SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        count = sharedPref.getInt("counter", 0);
 
         final TextView textView = (TextView) findViewById(R.id.counter);
         textView.setText(Integer.toString(count));
